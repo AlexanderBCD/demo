@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Task Manager</span>
+            <div>
+                <a href="/tasks" class="btn btn-outline-light btn-sm me-2">
+                    <i class="bi bi-list-task"></i> Tareas
+                </a>
+                <a href="/groupers" class="btn btn-light btn-sm me-2">
+                    <i class="bi bi-folder2"></i> Grupos
+                </a>
+                <a href="/priorities" class="btn btn-outline-light btn-sm">
+                    <i class="bi bi-flag"></i> Prioridades
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Lista de Grupos</h2>
+            <a href="/groupers/new" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Nuevo Grupo
+            </a>
+        </div>
+
+        <div th:if="${message}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <span th:text="${message}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <span th:text="${error}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:if="${groupers.empty}">
+                            <td colspan="3" class="text-center text-muted">No hay grupos registrados</td>
+                        </tr>
+                        <tr th:each="grouper : ${groupers}">
+                            <td th:text="${grouper.id}"></td>
+                            <td th:text="${grouper.name}"></td>
+                            <td>
+                                <a th:href="@{/groupers/{id}(id=${grouper.id})}" class="btn btn-sm btn-info">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <a th:href="@{/groupers/edit/{id}(id=${grouper.id})}" class="btn btn-sm btn-warning">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <form th:action="@{/groupers/delete/{id}(id=${grouper.id})}" method="post" style="display:inline;">
+                                    <button type="submit" class="btn btn-sm btn-danger" 
+                                            onclick="return confirm('¿Estás seguro de eliminar este grupo?')">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

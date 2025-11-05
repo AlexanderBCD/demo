@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Tarea</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Task Manager</span>
+            <div>
+                <a href="/tasks" class="btn btn-light btn-sm me-2">
+                    <i class="bi bi-list-task"></i> Tareas
+                </a>
+                <a href="/groupers" class="btn btn-outline-light btn-sm me-2">
+                    <i class="bi bi-folder2"></i> Grupos
+                </a>
+                <a href="/priorities" class="btn btn-outline-light btn-sm">
+                    <i class="bi bi-flag"></i> Prioridades
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h4>Detalle de Tarea #<span th:text="${task.id}"></span></h4>
+                        <div>
+                            <a th:href="@{/tasks/edit/{id}(id=${task.id})}" class="btn btn-warning btn-sm">
+                                <i class="bi bi-pencil"></i> Editar
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-md-3"><strong>ID:</strong></div>
+                            <div class="col-md-9" th:text="${task.id}"></div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-3"><strong>Orden:</strong></div>
+                            <div class="col-md-9" th:text="${task.orderIndex}"></div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-3"><strong>Título:</strong></div>
+                            <div class="col-md-9" th:text="${task.title}"></div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-3"><strong>Descripción:</strong></div>
+                            <div class="col-md-9">
+                                <p th:text="${task.description != null ? task.description : 'Sin descripción'}" 
+                                   class="text-muted" th:classappend="${task.description == null ? 'fst-italic' : ''}"></p>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-3"><strong>Fecha Límite:</strong></div>
+                            <div class="col-md-9">
+                                <span th:if="${task.dateLimit != null}" 
+                                      th:text="${#dates.format(task.dateLimit, 'dd/MM/yyyy HH:mm')}"></span>
+                                <span th:if="${task.dateLimit == null}" class="text-muted fst-italic">Sin fecha límite</span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-3"><strong>ID Grupo:</strong></div>
+                            <div class="col-md-9">
+                                <span th:if="${task.grouperId != null}" th:text="${task.grouperId}"></span>
+                                <span th:if="${task.grouperId == null}" class="text-muted fst-italic">Sin grupo asignado</span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-3"><strong>ID Prioridad:</strong></div>
+                            <div class="col-md-9">
+                                <span th:if="${task.priorityId != null}" th:text="${task.priorityId}"></span>
+                                <span th:if="${task.priorityId == null}" class="text-muted fst-italic">Sin prioridad asignada</span>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="d-flex justify-content-between">
+                            <a href="/tasks" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Volver
+                            </a>
+                            <form th:action="@{/tasks/delete/{id}(id=${task.id})}" method="post" style="display:inline;">
+                                <button type="submit" class="btn btn-danger" 
+                                        onclick="return confirm('¿Estás seguro de eliminar esta tarea?')">
+                                    <i class="bi bi-trash"></i> Eliminar
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

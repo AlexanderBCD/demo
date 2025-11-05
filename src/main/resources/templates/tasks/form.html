@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Tarea</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Task Manager</span>
+            <div>
+                <a href="/tasks" class="btn btn-light btn-sm me-2">
+                    <i class="bi bi-list-task"></i> Tareas
+                </a>
+                <a href="/groupers" class="btn btn-outline-light btn-sm me-2">
+                    <i class="bi bi-folder2"></i> Grupos
+                </a>
+                <a href="/priorities" class="btn btn-outline-light btn-sm">
+                    <i class="bi bi-flag"></i> Prioridades
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Nueva Tarea</h4>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/tasks}" method="post" th:object="${task}">
+                            <div class="mb-3">
+                                <label for="orderIndex" class="form-label">Orden <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="orderIndex" 
+                                       th:field="*{orderIndex}" required>
+                                <div class="form-text">Índice de ordenamiento único</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Título <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="title" 
+                                       th:field="*{title}" maxlength="50" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="description" 
+                                          th:field="*{description}" rows="4"></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="dateLimit" class="form-label">Fecha Límite</label>
+                                <input type="datetime-local" class="form-control" id="dateLimit" 
+                                       th:field="*{dateLimit}">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="grouperId" class="form-label">ID Grupo</label>
+                                    <input type="number" class="form-control" id="grouperId" 
+                                           th:field="*{grouperId}">
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="priorityId" class="form-label">ID Prioridad</label>
+                                    <input type="number" class="form-control" id="priorityId" 
+                                           th:field="*{priorityId}">
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between">
+                                <a href="/tasks" class="btn btn-secondary">
+                                    <i class="bi bi-arrow-left"></i> Cancelar
+                                </a>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-save"></i> Guardar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
