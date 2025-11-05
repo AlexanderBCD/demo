@@ -41,8 +41,8 @@ class TaskViewController @Autowired constructor(
             }
         }
         
-        // Obtener tareas con detalles (JOIN con groupers y priorities)
-        val tasksWithDetails = taskService.getAllTasksWithDetails()
+        // Obtener tareas con detalles Y ordenadas según la estrategia activa
+        val tasksWithDetails = taskService.getAllTasksWithDetailsSorted()
         model.addAttribute("tasks", tasksWithDetails)
         model.addAttribute("currentSortingStrategy", taskService.getCurrentSortingStrategy())
         model.addAttribute("currentValidationStrategy", taskService.getCurrentValidationStrategy())

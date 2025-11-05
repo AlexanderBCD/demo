@@ -9,6 +9,7 @@ import com.example.demo.strategy.validation.TaskValidationStrategy
 interface TaskService {
     fun getAllTasks(): List<TaskResponse>
     fun getAllTasksWithDetails(): List<TaskWithDetails>
+    fun getAllTasksWithDetailsSorted(): List<TaskWithDetails>
     fun getAllTasksSorted(): List<TaskResponse>
     fun getTaskById(id: Long): TaskResponse?
     fun createTask(taskRequest: TaskRequest): TaskResponse

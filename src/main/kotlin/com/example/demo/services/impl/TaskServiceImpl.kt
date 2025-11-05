@@ -28,6 +28,24 @@ class TaskServiceImpl @Autowired constructor(
         return taskRepository.getAllWithDetails()
     }
 
+    override fun getAllTasksWithDetailsSorted(): List<TaskWithDetails> {
+        val tasks = taskRepository.getAllWithDetails()
+        
+        // Aplicar ordenamiento según la estrategia actual
+        val strategyName = sortingContext.getCurrentStrategyName()
+        return when {
+            strategyName.contains("Índice", ignoreCase = true) -> 
+                tasks.sortedBy { it.orderIndex }
+            strategyName.contains("Título", ignoreCase = true) -> 
+                tasks.sortedBy { it.title.lowercase() }
+            strategyName.contains("Fecha", ignoreCase = true) -> 
+                tasks.sortedWith(compareBy(nullsLast()) { it.dateLimit })
+            strategyName.contains("Prioridad", ignoreCase = true) -> 
+                tasks.sortedWith(compareBy(nullsLast()) { it.priorityId })
+            else -> tasks.sortedBy { it.orderIndex } // Por defecto ordenar por índice
+        }
+    }
+
     override fun getAllTasksSorted(): List<TaskResponse> {
         val tasks = taskRepository.getAll().map { TaskResponse.fromEntity(it) }
         return sortingContext.sort(tasks)

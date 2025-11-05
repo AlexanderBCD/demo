@@ -54,51 +54,51 @@
                         <label class="form-label fw-bold">Ordenar por:</label>
                         <div class="btn-group d-block" role="group">
                             <a href="/tasks?sortStrategy=orderindex" 
-                               th:classappend="${currentSortingStrategy == 'OrderIndexSortingStrategy' ? 'active' : ''}"
+                               th:classappend="${#strings.contains(currentSortingStrategy, 'Índice') ? 'active' : ''}"
                                class="btn btn-outline-primary">
                                 <i class="bi bi-sort-numeric-down"></i> Índice de Orden
                             </a>
                             <a href="/tasks?sortStrategy=title" 
-                               th:classappend="${currentSortingStrategy == 'TitleSortingStrategy' ? 'active' : ''}"
+                               th:classappend="${#strings.contains(currentSortingStrategy, 'Título') ? 'active' : ''}"
                                class="btn btn-outline-primary">
                                 <i class="bi bi-sort-alpha-down"></i> Título
                             </a>
                             <a href="/tasks?sortStrategy=datelimit" 
-                               th:classappend="${currentSortingStrategy == 'DateLimitSortingStrategy' ? 'active' : ''}"
+                               th:classappend="${#strings.contains(currentSortingStrategy, 'Fecha') ? 'active' : ''}"
                                class="btn btn-outline-primary">
                                 <i class="bi bi-calendar"></i> Fecha Límite
                             </a>
                             <a href="/tasks?sortStrategy=priority" 
-                               th:classappend="${currentSortingStrategy == 'PrioritySortingStrategy' ? 'active' : ''}"
+                               th:classappend="${#strings.contains(currentSortingStrategy, 'Prioridad') ? 'active' : ''}"
                                class="btn btn-outline-primary">
                                 <i class="bi bi-flag"></i> Prioridad
                             </a>
                         </div>
                         <small class="text-muted d-block mt-1">
-                            Estrategia actual: <span class="badge bg-info" th:text="${currentSortingStrategy}"></span>
+                            <i class="bi bi-arrow-down-up"></i> Ordenamiento actual: <span class="badge bg-info" th:text="${currentSortingStrategy}"></span>
                         </small>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label fw-bold">Validación:</label>
                         <div class="btn-group d-block" role="group">
                             <a href="/tasks/validation?strategy=basic" 
-                               th:classappend="${currentValidationStrategy == 'BasicTaskValidationStrategy' ? 'active' : ''}"
+                               th:classappend="${#strings.contains(currentValidationStrategy, 'Básica') ? 'active' : ''}"
                                class="btn btn-outline-success">
                                 <i class="bi bi-check-circle"></i> Básica
                             </a>
                             <a href="/tasks/validation?strategy=strict" 
-                               th:classappend="${currentValidationStrategy == 'StrictTaskValidationStrategy' ? 'active' : ''}"
+                               th:classappend="${#strings.contains(currentValidationStrategy, 'Estricta') ? 'active' : ''}"
                                class="btn btn-outline-success">
                                 <i class="bi bi-shield-check"></i> Estricta
                             </a>
                             <a href="/tasks/validation?strategy=permissive" 
-                               th:classappend="${currentValidationStrategy == 'PermissiveTaskValidationStrategy' ? 'active' : ''}"
+                               th:classappend="${#strings.contains(currentValidationStrategy, 'Permisiva') ? 'active' : ''}"
                                class="btn btn-outline-success">
                                 <i class="bi bi-unlock"></i> Permisiva
                             </a>
                         </div>
                         <small class="text-muted d-block mt-1">
-                            Estrategia actual: <span class="badge bg-success" th:text="${currentValidationStrategy}"></span>
+                            <i class="bi bi-shield-check"></i> Validación actual: <span class="badge bg-success" th:text="${currentValidationStrategy}"></span>
                         </small>
                     </div>
                 </div>
