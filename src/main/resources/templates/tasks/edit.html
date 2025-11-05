@@ -33,6 +33,18 @@
                         <h4>Editar Tarea #<span th:text="${task.id}"></span></h4>
                     </div>
                     <div class="card-body">
+                        <!-- Indicador de estrategia de validación -->
+                        <div th:if="${validationStrategy}" class="alert alert-info mb-3">
+                            <i class="bi bi-info-circle"></i> 
+                            <strong>Estrategia de validación activa:</strong> 
+                            <span th:text="${validationStrategy}"></span>
+                        </div>
+                        
+                        <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <span th:text="${error}"></span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                        
                         <form th:action="@{/tasks/{id}(id=${task.id})}" method="post" th:object="${task}">
                             <input type="hidden" th:field="*{id}">
                             

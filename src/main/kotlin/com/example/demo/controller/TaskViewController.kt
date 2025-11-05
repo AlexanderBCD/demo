@@ -92,18 +92,28 @@ class TaskViewController @Autowired constructor(
         ))
         model.addAttribute("groupers", grouperService.getAllGroupers())
         model.addAttribute("priorities", priorityService.getAllPriorities())
+        model.addAttribute("validationStrategy", taskService.getCurrentValidationStrategy())
         return "tasks/form"
     }
 
     @PostMapping
     fun createTask(
         @ModelAttribute task: TaskRequest,
+        model: Model,
         redirectAttributes: RedirectAttributes
     ): String {
         return try {
             taskService.createTask(task)
-            redirectAttributes.addFlashAttribute("message", "Tarea creada exitosamente")
+            redirectAttributes.addFlashAttribute("message", "Tarea creada exitosamente ✅ (Validación: ${taskService.getCurrentValidationStrategy()})")
             "redirect:/tasks"
+        } catch (e: IllegalArgumentException) {
+            // Error de validación - mostrar en el mismo formulario
+            model.addAttribute("task", task)
+            model.addAttribute("groupers", grouperService.getAllGroupers())
+            model.addAttribute("priorities", priorityService.getAllPriorities())
+            model.addAttribute("error", "❌ ${e.message}")
+            model.addAttribute("validationStrategy", taskService.getCurrentValidationStrategy())
+            "tasks/form"
         } catch (e: Exception) {
             redirectAttributes.addFlashAttribute("error", "Error al crear la tarea: ${e.message}")
             "redirect:/tasks/new"
@@ -126,6 +136,7 @@ class TaskViewController @Autowired constructor(
             model.addAttribute("task", taskRequest)
             model.addAttribute("groupers", grouperService.getAllGroupers())
             model.addAttribute("priorities", priorityService.getAllPriorities())
+            model.addAttribute("validationStrategy", taskService.getCurrentValidationStrategy())
             "tasks/edit"
         } else {
             redirectAttributes.addFlashAttribute("error", "Tarea no encontrada")
@@ -137,17 +148,26 @@ class TaskViewController @Autowired constructor(
     fun updateTask(
         @PathVariable id: Long,
         @ModelAttribute taskRequest: TaskRequest,
+        model: Model,
         redirectAttributes: RedirectAttributes
     ): String {
         return try {
             val updated = taskService.updateTask(id, taskRequest)
             if (updated != null) {
-                redirectAttributes.addFlashAttribute("message", "Tarea actualizada exitosamente")
+                redirectAttributes.addFlashAttribute("message", "Tarea actualizada exitosamente ✅ (Validación: ${taskService.getCurrentValidationStrategy()})")
                 "redirect:/tasks"
             } else {
                 redirectAttributes.addFlashAttribute("error", "No se pudo actualizar la tarea")
                 "redirect:/tasks/edit/$id"
             }
+        } catch (e: IllegalArgumentException) {
+            // Error de validación - mostrar en el mismo formulario
+            model.addAttribute("task", taskRequest)
+            model.addAttribute("groupers", grouperService.getAllGroupers())
+            model.addAttribute("priorities", priorityService.getAllPriorities())
+            model.addAttribute("error", "❌ ${e.message}")
+            model.addAttribute("validationStrategy", taskService.getCurrentValidationStrategy())
+            "tasks/edit"
         } catch (e: Exception) {
             redirectAttributes.addFlashAttribute("error", "Error al actualizar la tarea: ${e.message}")
             "redirect:/tasks/edit/$id"

@@ -33,6 +33,18 @@
                         <h4>Nueva Tarea</h4>
                     </div>
                     <div class="card-body">
+                        <!-- Indicador de estrategia de validación -->
+                        <div th:if="${validationStrategy}" class="alert alert-info mb-3">
+                            <i class="bi bi-info-circle"></i> 
+                            <strong>Estrategia de validación activa:</strong> 
+                            <span th:text="${validationStrategy}"></span>
+                        </div>
+                        
+                        <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <span th:text="${error}"></span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                        
                         <form th:action="@{/tasks}" method="post" th:object="${task}">
                             <div class="mb-3">
                                 <label for="orderIndex" class="form-label">Orden <span class="text-danger">*</span></label>
