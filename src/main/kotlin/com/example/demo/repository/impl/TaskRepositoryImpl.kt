@@ -1,5 +1,6 @@
 package com.example.demo.repository.impl
 
+import com.example.demo.dto.TaskWithDetails
 import com.example.demo.model.Tasks
 import com.example.demo.repository.TaskRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -25,9 +26,43 @@ class TaskRepositoryImpl @Autowired constructor(private val jdbcTemplate: JdbcTe
         )
     }
 
+    private val taskWithDetailsRowMapper = RowMapper { rs, _ ->
+        TaskWithDetails(
+            id = rs.getLong("id"),
+            orderIndex = rs.getInt("order_index"),
+            title = rs.getString("title"),
+            description = rs.getString("description"),
+            dateLimit = rs.getTimestamp("date_limit"),
+            grouperId = rs.getLong("grouper_id").takeIf { !rs.wasNull() },
+            grouperName = rs.getString("grouper_name"),
+            priorityId = rs.getLong("priority_id").takeIf { !rs.wasNull() },
+            priorityName = rs.getString("priority_name")
+        )
+    }
+
     override fun getAll(): List<Tasks> {
         val sql = "SELECT * FROM tasks ORDER BY order_index"
         return jdbcTemplate.query(sql, taskRowMapper)
+    }
+
+    override fun getAllWithDetails(): List<TaskWithDetails> {
+        val sql = """
+            SELECT 
+                t.id, 
+                t.order_index, 
+                t.title, 
+                t.description, 
+                t.date_limit, 
+                t.grouper_id,
+                g.name as grouper_name,
+                t.priority_id,
+                p.name as priority_name
+            FROM tasks t
+            LEFT JOIN groupers g ON t.grouper_id = g.id
+            LEFT JOIN priorities p ON t.priority_id = p.id
+            ORDER BY t.order_index
+        """
+        return jdbcTemplate.query(sql, taskWithDetailsRowMapper)
     }
 
     override fun getById(id: Long): Tasks? {

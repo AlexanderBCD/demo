@@ -43,6 +43,68 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
 
+        <!-- Strategy Pattern Selection -->
+        <div class="card mb-3">
+            <div class="card-header bg-light">
+                <h5 class="mb-0"><i class="bi bi-gear"></i> Estrategias de Ordenamiento y Validación</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Ordenar por:</label>
+                        <div class="btn-group d-block" role="group">
+                            <a href="/tasks?sortStrategy=orderindex" 
+                               th:classappend="${currentSortingStrategy == 'OrderIndexSortingStrategy' ? 'active' : ''}"
+                               class="btn btn-outline-primary">
+                                <i class="bi bi-sort-numeric-down"></i> Índice de Orden
+                            </a>
+                            <a href="/tasks?sortStrategy=title" 
+                               th:classappend="${currentSortingStrategy == 'TitleSortingStrategy' ? 'active' : ''}"
+                               class="btn btn-outline-primary">
+                                <i class="bi bi-sort-alpha-down"></i> Título
+                            </a>
+                            <a href="/tasks?sortStrategy=datelimit" 
+                               th:classappend="${currentSortingStrategy == 'DateLimitSortingStrategy' ? 'active' : ''}"
+                               class="btn btn-outline-primary">
+                                <i class="bi bi-calendar"></i> Fecha Límite
+                            </a>
+                            <a href="/tasks?sortStrategy=priority" 
+                               th:classappend="${currentSortingStrategy == 'PrioritySortingStrategy' ? 'active' : ''}"
+                               class="btn btn-outline-primary">
+                                <i class="bi bi-flag"></i> Prioridad
+                            </a>
+                        </div>
+                        <small class="text-muted d-block mt-1">
+                            Estrategia actual: <span class="badge bg-info" th:text="${currentSortingStrategy}"></span>
+                        </small>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Validación:</label>
+                        <div class="btn-group d-block" role="group">
+                            <a href="/tasks/validation?strategy=basic" 
+                               th:classappend="${currentValidationStrategy == 'BasicTaskValidationStrategy' ? 'active' : ''}"
+                               class="btn btn-outline-success">
+                                <i class="bi bi-check-circle"></i> Básica
+                            </a>
+                            <a href="/tasks/validation?strategy=strict" 
+                               th:classappend="${currentValidationStrategy == 'StrictTaskValidationStrategy' ? 'active' : ''}"
+                               class="btn btn-outline-success">
+                                <i class="bi bi-shield-check"></i> Estricta
+                            </a>
+                            <a href="/tasks/validation?strategy=permissive" 
+                               th:classappend="${currentValidationStrategy == 'PermissiveTaskValidationStrategy' ? 'active' : ''}"
+                               class="btn btn-outline-success">
+                                <i class="bi bi-unlock"></i> Permisiva
+                            </a>
+                        </div>
+                        <small class="text-muted d-block mt-1">
+                            Estrategia actual: <span class="badge bg-success" th:text="${currentValidationStrategy}"></span>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="card">
             <div class="card-body">
                 <table class="table table-hover">
@@ -68,8 +130,14 @@
                             <td th:text="${task.title}"></td>
                             <td th:text="${task.description != null ? task.description : '-'}"></td>
                             <td th:text="${task.dateLimit != null ? #dates.format(task.dateLimit, 'dd/MM/yyyy HH:mm') : '-'}"></td>
-                            <td th:text="${task.grouperId != null ? task.grouperId : '-'}"></td>
-                            <td th:text="${task.priorityId != null ? task.priorityId : '-'}"></td>
+                            <td>
+                                <span th:if="${task.grouperName != null}" class="badge bg-info" th:text="${task.grouperName}"></span>
+                                <span th:if="${task.grouperName == null}" class="text-muted">-</span>
+                            </td>
+                            <td>
+                                <span th:if="${task.priorityName != null}" class="badge bg-warning text-dark" th:text="${task.priorityName}"></span>
+                                <span th:if="${task.priorityName == null}" class="text-muted">-</span>
+                            </td>
                             <td>
                                 <a th:href="@{/tasks/{id}(id=${task.id})}" class="btn btn-sm btn-info">
                                     <i class="bi bi-eye"></i>

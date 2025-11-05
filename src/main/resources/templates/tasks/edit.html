@@ -63,15 +63,29 @@
 
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="grouperId" class="form-label">ID Grupo</label>
-                                    <input type="number" class="form-control" id="grouperId" 
-                                           th:field="*{grouperId}">
+                                    <label for="grouperId" class="form-label">
+                                        <i class="bi bi-folder2"></i> Grupo
+                                    </label>
+                                    <select class="form-select" id="grouperId" th:field="*{grouperId}">
+                                        <option value="">-- Seleccionar Grupo --</option>
+                                        <option th:each="grouper : ${groupers}" 
+                                                th:value="${grouper.id}" 
+                                                th:text="${grouper.name}">
+                                        </option>
+                                    </select>
                                 </div>
 
                                 <div class="col-md-6 mb-3">
-                                    <label for="priorityId" class="form-label">ID Prioridad</label>
-                                    <input type="number" class="form-control" id="priorityId" 
-                                           th:field="*{priorityId}">
+                                    <label for="priorityId" class="form-label">
+                                        <i class="bi bi-flag"></i> Prioridad
+                                    </label>
+                                    <select class="form-select" id="priorityId" th:field="*{priorityId}">
+                                        <option value="">-- Seleccionar Prioridad --</option>
+                                        <option th:each="priority : ${priorities}" 
+                                                th:value="${priority.id}" 
+                                                th:text="${priority.name}">
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
 
