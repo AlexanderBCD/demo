@@ -1,0 +1,145 @@
+<mxfile host="app.diagrams.net" modified="2025-11-05T00:00:00.000Z" agent="GitHub Copilot" version="22.0.0" etag="architecture" type="device">
+  <diagram name="Arquitectura de Capas" id="architecture-layers">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Título -->
+        <mxCell id="title" value="Arquitectura de Capas - Sistema de Gestión de Tareas" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="284" y="40" width="600" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Capa de Presentación -->
+        <mxCell id="presentation-layer" value="&lt;b&gt;Capa de Presentación&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;verticalAlign=top;fontSize=14;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="1000" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Controllers -->
+        <mxCell id="controllers" value="&lt;b&gt;Controllers&lt;/b&gt;&lt;br&gt;&lt;br&gt;TaskController&lt;br&gt;GrouperController&lt;br&gt;PriorityController&lt;br&gt;TaskStrategyController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;" vertex="1" parent="1">
+          <mxGeometry x="120" y="150" width="200" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="view-controllers" value="&lt;b&gt;View Controllers&lt;/b&gt;&lt;br&gt;&lt;br&gt;TaskViewController&lt;br&gt;GrouperViewController&lt;br&gt;PriorityViewController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;" vertex="1" parent="1">
+          <mxGeometry x="360" y="150" width="200" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="templates" value="&lt;b&gt;Templates (Thymeleaf)&lt;/b&gt;&lt;br&gt;&lt;br&gt;tasks/*.html&lt;br&gt;groupers/*.html&lt;br&gt;priorities/*.html" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;" vertex="1" parent="1">
+          <mxGeometry x="600" y="150" width="200" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="config" value="&lt;b&gt;Configuration&lt;/b&gt;&lt;br&gt;&lt;br&gt;SecurityConfig&lt;br&gt;WebConfig" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;" vertex="1" parent="1">
+          <mxGeometry x="840" y="150" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Capa de Negocio -->
+        <mxCell id="business-layer" value="&lt;b&gt;Capa de Negocio (Service Layer)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;verticalAlign=top;fontSize=14;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="280" width="1000" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Services -->
+        <mxCell id="services" value="&lt;b&gt;Services&lt;/b&gt;&lt;br&gt;&lt;br&gt;TaskService&lt;br&gt;GrouperService&lt;br&gt;PriorityService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=center;" vertex="1" parent="1">
+          <mxGeometry x="120" y="310" width="280" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Strategy Pattern -->
+        <mxCell id="strategy-layer" value="&lt;b&gt;Strategy Pattern&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;verticalAlign=top;fontSize=12;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="440" y="290" width="620" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="validation-context" value="&lt;b&gt;Validation Context&lt;/b&gt;&lt;br&gt;&lt;br&gt;TaskValidationContext&lt;br&gt;- BasicValidation&lt;br&gt;- StrictValidation&lt;br&gt;- PermissiveValidation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=center;" vertex="1" parent="1">
+          <mxGeometry x="460" y="315" width="180" height="65" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="sorting-context" value="&lt;b&gt;Sorting Context&lt;/b&gt;&lt;br&gt;&lt;br&gt;TaskSortingContext&lt;br&gt;- OrderIndexSorting&lt;br&gt;- TitleSorting&lt;br&gt;- DateLimitSorting&lt;br&gt;- PrioritySorting" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=center;" vertex="1" parent="1">
+          <mxGeometry x="680" y="315" width="180" height="65" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dto-layer" value="&lt;b&gt;DTOs&lt;/b&gt;&lt;br&gt;&lt;br&gt;TaskRequest/Response&lt;br&gt;GrouperRequest/Response&lt;br&gt;PriorityRequest/Response&lt;br&gt;TaskWithDetails" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=center;" vertex="1" parent="1">
+          <mxGeometry x="880" y="315" width="160" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Capa de Persistencia -->
+        <mxCell id="persistence-layer" value="&lt;b&gt;Capa de Persistencia (Data Access Layer)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;verticalAlign=top;fontSize=14;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="440" width="1000" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Repositories -->
+        <mxCell id="repositories" value="&lt;b&gt;Repositories&lt;/b&gt;&lt;br&gt;&lt;br&gt;TaskRepository&lt;br&gt;GrouperRepository&lt;br&gt;PriorityRepository" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=center;" vertex="1" parent="1">
+          <mxGeometry x="120" y="470" width="280" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- JdbcTemplate -->
+        <mxCell id="jdbc" value="&lt;b&gt;JdbcTemplate&lt;/b&gt;&lt;br&gt;&lt;br&gt;Spring JDBC&lt;br&gt;RowMapper&lt;br&gt;SQL Queries" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=center;" vertex="1" parent="1">
+          <mxGeometry x="440" y="470" width="200" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Model -->
+        <mxCell id="model" value="&lt;b&gt;Domain Model&lt;/b&gt;&lt;br&gt;&lt;br&gt;Tasks (Entity)&lt;br&gt;Groupers (Entity)&lt;br&gt;Priorities (Entity)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=center;" vertex="1" parent="1">
+          <mxGeometry x="680" y="470" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Capa de Base de Datos -->
+        <mxCell id="database-layer" value="&lt;b&gt;Capa de Base de Datos&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;verticalAlign=top;fontSize=14;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="600" width="1000" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Database -->
+        <mxCell id="database" value="&lt;b&gt;MySQL Database&lt;/b&gt;&lt;br&gt;&lt;br&gt;tasks table&lt;br&gt;groupers table&lt;br&gt;priorities table" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="460" y="625" width="240" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Flechas de comunicación -->
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="controllers" target="services">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="view-controllers" target="services">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="services" target="repositories">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=classic;endFill=1;dashed=1;" edge="1" parent="1" source="services" target="validation-context">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=classic;endFill=1;dashed=1;" edge="1" parent="1" source="services" target="sorting-context">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="repositories" target="database">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Leyenda -->
+        <mxCell id="legend-title" value="&lt;b&gt;Leyenda:&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="80" y="730" width="80" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend1" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="80" y="760" as="sourcePoint" />
+            <mxPoint x="140" y="760" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend1-text" value="Dependencia directa" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="150" y="750" width="120" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend2" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;dashed=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="300" y="760" as="sourcePoint" />
+            <mxPoint x="360" y="760" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend2-text" value="Uso de Strategy Pattern" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="370" y="750" width="150" height="20" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

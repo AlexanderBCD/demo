@@ -1,0 +1,225 @@
+<mxfile host="app.diagrams.net" modified="2025-11-05T00:00:00.000Z" agent="GitHub Copilot" version="22.0.0" etag="strategy-pattern" type="device">
+  <diagram name="Diagrama Strategy Pattern" id="strategy-pattern">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Título -->
+        <mxCell id="title" value="Patrón Strategy - Validación y Ordenamiento de Tareas" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="234" y="30" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- SECCIÓN: VALIDATION STRATEGY -->
+        <mxCell id="validation-section" value="VALIDATION STRATEGY" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="80" y="90" width="500" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Interface TaskValidationStrategy -->
+        <mxCell id="validation-interface" value="&lt;&lt;interface&gt;&gt;&lt;br&gt;&lt;b&gt;TaskValidationStrategy&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="180" y="140" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="validation-interface-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="validation-interface">
+          <mxGeometry y="40" width="300" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="validation-interface-methods" value="+ validate(taskRequest: TaskRequest): ValidationResult&lt;br&gt;+ getStrategyName(): String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontStyle=2" vertex="1" parent="validation-interface">
+          <mxGeometry y="48" width="300" height="52" as="geometry" />
+        </mxCell>
+
+        <!-- BasicTaskValidationStrategy -->
+        <mxCell id="basic-validation" value="&lt;b&gt;BasicTaskValidationStrategy&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="300" width="260" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="basic-validation-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="basic-validation">
+          <mxGeometry y="26" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="basic-validation-methods" value="+ validate(...): ValidationResult&lt;br&gt;+ getStrategyName(): String&lt;br&gt;&lt;br&gt;&lt;i&gt;Validaciones:&lt;/i&gt;&lt;br&gt;- Title no vacío&lt;br&gt;- orderIndex único&lt;br&gt;- Longitud máxima del título" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="basic-validation">
+          <mxGeometry y="34" width="260" height="106" as="geometry" />
+        </mxCell>
+
+        <!-- StrictTaskValidationStrategy -->
+        <mxCell id="strict-validation" value="&lt;b&gt;StrictTaskValidationStrategy&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="320" y="300" width="260" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="strict-validation-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="strict-validation">
+          <mxGeometry y="26" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="strict-validation-methods" value="+ validate(...): ValidationResult&lt;br&gt;+ getStrategyName(): String&lt;br&gt;&lt;br&gt;&lt;i&gt;Validaciones (Todas de Basic +):&lt;/i&gt;&lt;br&gt;- Description obligatoria&lt;br&gt;- dateLimit obligatorio&lt;br&gt;- grouperId y priorityId obligatorios&lt;br&gt;- Fecha límite en el futuro" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="strict-validation">
+          <mxGeometry y="34" width="260" height="126" as="geometry" />
+        </mxCell>
+
+        <!-- PermissiveTaskValidationStrategy -->
+        <mxCell id="permissive-validation" value="&lt;b&gt;PermissiveTaskValidationStrategy&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="600" y="300" width="280" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="permissive-validation-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="permissive-validation">
+          <mxGeometry y="26" width="280" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="permissive-validation-methods" value="+ validate(...): ValidationResult&lt;br&gt;+ getStrategyName(): String&lt;br&gt;&lt;br&gt;&lt;i&gt;Validaciones Mínimas:&lt;/i&gt;&lt;br&gt;- Solo title no vacío&lt;br&gt;- Permite todos los campos opcionales" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="permissive-validation">
+          <mxGeometry y="34" width="280" height="86" as="geometry" />
+        </mxCell>
+
+        <!-- TaskValidationContext -->
+        <mxCell id="validation-context" value="&lt;b&gt;TaskValidationContext&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="920" y="140" width="220" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="validation-context-attrs" value="- currentStrategy: TaskValidationStrategy&lt;br&gt;- strategies: Map&lt;String, Strategy&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="validation-context">
+          <mxGeometry y="26" width="220" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="validation-context-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="validation-context">
+          <mxGeometry y="70" width="220" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="validation-context-methods" value="+ setStrategy(name: String)&lt;br&gt;+ validate(...): ValidationResult&lt;br&gt;+ getCurrentStrategyName(): String&lt;br&gt;+ getAvailableStrategies(): List" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="validation-context">
+          <mxGeometry y="78" width="220" height="92" as="geometry" />
+        </mxCell>
+
+        <!-- Relaciones de implementación (Validation) -->
+        <mxCell id="impl1" value="" style="endArrow=block;dashed=1;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;endFill=0;" edge="1" parent="1" source="basic-validation" target="validation-interface">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="170" y="280" as="sourcePoint" />
+            <mxPoint x="220" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="impl2" value="" style="endArrow=block;dashed=1;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;endFill=0;" edge="1" parent="1" source="strict-validation" target="validation-interface">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="280" as="sourcePoint" />
+            <mxPoint x="390" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="impl3" value="" style="endArrow=block;dashed=1;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;endFill=0;" edge="1" parent="1" source="permissive-validation" target="validation-interface">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="510" y="280" as="sourcePoint" />
+            <mxPoint x="560" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Relación Context usa Strategy -->
+        <mxCell id="uses1" value="usa &gt;" style="endArrow=open;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;dashed=1;" edge="1" parent="1" source="validation-context-attrs" target="validation-interface-methods">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="900" y="190" as="sourcePoint" />
+            <mxPoint x="480" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- SECCIÓN: SORTING STRATEGY -->
+        <mxCell id="sorting-section" value="SORTING STRATEGY" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="80" y="490" width="500" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Interface TaskSortingStrategy -->
+        <mxCell id="sorting-interface" value="&lt;&lt;interface&gt;&gt;&lt;br&gt;&lt;b&gt;TaskSortingStrategy&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="240" y="540" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="sorting-interface-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="sorting-interface">
+          <mxGeometry y="40" width="300" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="sorting-interface-methods" value="+ sort(tasks: List&lt;TaskResponse&gt;): List&lt;TaskResponse&gt;&lt;br&gt;+ getStrategyName(): String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontStyle=2" vertex="1" parent="sorting-interface">
+          <mxGeometry y="48" width="300" height="52" as="geometry" />
+        </mxCell>
+
+        <!-- OrderIndexSortingStrategy -->
+        <mxCell id="order-sorting" value="&lt;b&gt;OrderIndexSortingStrategy&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="680" width="220" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="order-sorting-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="order-sorting">
+          <mxGeometry y="26" width="220" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="order-sorting-methods" value="+ sort(...): List&lt;TaskResponse&gt;&lt;br&gt;+ getStrategyName(): String&lt;br&gt;&lt;br&gt;&lt;i&gt;Ordena por: orderIndex (ASC)&lt;/i&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="order-sorting">
+          <mxGeometry y="34" width="220" height="66" as="geometry" />
+        </mxCell>
+
+        <!-- TitleSortingStrategy -->
+        <mxCell id="title-sorting" value="&lt;b&gt;TitleSortingStrategy&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="280" y="680" width="220" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="title-sorting-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="title-sorting">
+          <mxGeometry y="26" width="220" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="title-sorting-methods" value="+ sort(...): List&lt;TaskResponse&gt;&lt;br&gt;+ getStrategyName(): String&lt;br&gt;&lt;br&gt;&lt;i&gt;Ordena por: title (alfabético)&lt;/i&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="title-sorting">
+          <mxGeometry y="34" width="220" height="66" as="geometry" />
+        </mxCell>
+
+        <!-- DateLimitSortingStrategy -->
+        <mxCell id="date-sorting" value="&lt;b&gt;DateLimitSortingStrategy&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="520" y="680" width="230" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="date-sorting-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="date-sorting">
+          <mxGeometry y="26" width="230" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="date-sorting-methods" value="+ sort(...): List&lt;TaskResponse&gt;&lt;br&gt;+ getStrategyName(): String&lt;br&gt;&lt;br&gt;&lt;i&gt;Ordena por: dateLimit (ASC)&lt;/i&gt;&lt;br&gt;&lt;i&gt;nulls al final&lt;/i&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="date-sorting">
+          <mxGeometry y="34" width="230" height="76" as="geometry" />
+        </mxCell>
+
+        <!-- PrioritySortingStrategy -->
+        <mxCell id="priority-sorting" value="&lt;b&gt;PrioritySortingStrategy&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="770" y="680" width="230" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="priority-sorting-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="priority-sorting">
+          <mxGeometry y="26" width="230" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="priority-sorting-methods" value="+ sort(...): List&lt;TaskResponse&gt;&lt;br&gt;+ getStrategyName(): String&lt;br&gt;&lt;br&gt;&lt;i&gt;Ordena por: priorityId (ASC)&lt;/i&gt;&lt;br&gt;&lt;i&gt;nulls al final&lt;/i&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="priority-sorting">
+          <mxGeometry y="34" width="230" height="76" as="geometry" />
+        </mxCell>
+
+        <!-- TaskSortingContext -->
+        <mxCell id="sorting-context" value="&lt;b&gt;TaskSortingContext&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="760" y="540" width="220" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="sorting-context-attrs" value="- currentStrategy: TaskSortingStrategy&lt;br&gt;- strategies: Map&lt;String, Strategy&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="sorting-context">
+          <mxGeometry y="26" width="220" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="sorting-context-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="sorting-context">
+          <mxGeometry y="70" width="220" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="sorting-context-methods" value="+ setStrategy(name: String)&lt;br&gt;+ sort(...): List&lt;TaskResponse&gt;&lt;br&gt;+ getCurrentStrategyName(): String&lt;br&gt;+ getAvailableStrategies(): List" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="sorting-context">
+          <mxGeometry y="78" width="220" height="92" as="geometry" />
+        </mxCell>
+
+        <!-- Relaciones de implementación (Sorting) -->
+        <mxCell id="impl4" value="" style="endArrow=block;dashed=1;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.2;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;endFill=0;entryPerimeter=0;" edge="1" parent="1" source="order-sorting" target="sorting-interface">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="150" y="660" as="sourcePoint" />
+            <mxPoint x="200" y="610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="impl5" value="" style="endArrow=block;dashed=1;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.4;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;endFill=0;entryPerimeter=0;" edge="1" parent="1" source="title-sorting" target="sorting-interface">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="660" as="sourcePoint" />
+            <mxPoint x="440" y="610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="impl6" value="" style="endArrow=block;dashed=1;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.6;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;endFill=0;entryPerimeter=0;" edge="1" parent="1" source="date-sorting" target="sorting-interface">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="635" y="660" as="sourcePoint" />
+            <mxPoint x="685" y="610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="impl7" value="" style="endArrow=block;dashed=1;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.8;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;endFill=0;entryPerimeter=0;" edge="1" parent="1" source="priority-sorting" target="sorting-interface">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="885" y="660" as="sourcePoint" />
+            <mxPoint x="935" y="610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Relación Context usa Strategy -->
+        <mxCell id="uses2" value="usa &gt;" style="endArrow=open;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;dashed=1;" edge="1" parent="1" source="sorting-context-attrs" target="sorting-interface-methods">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="740" y="590" as="sourcePoint" />
+            <mxPoint x="540" y="590" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Nota explicativa -->
+        <mxCell id="note" value="&lt;b&gt;Patrón Strategy&lt;/b&gt;&lt;br&gt;&lt;br&gt;Permite cambiar dinámicamente el algoritmo&lt;br&gt;de validación o ordenamiento sin modificar&lt;br&gt;el código cliente.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ventajas:&lt;/b&gt;&lt;br&gt;✓ Extensible (agregar nuevas estrategias)&lt;br&gt;✓ Intercambiable en tiempo de ejecución&lt;br&gt;✓ Separa lógica de negocio del algoritmo&lt;br&gt;✓ Cumple Open/Closed Principle" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;verticalAlign=top;size=15;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="540" width="280" height="220" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
