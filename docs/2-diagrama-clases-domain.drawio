@@ -1,156 +1,194 @@
-<mxfile host="app.diagrams.net" modified="2025-11-05T00:00:00.000Z" agent="GitHub Copilot" version="22.0.0" etag="domain-model" type="device">
-  <diagram name="Diagrama de Clases - Domain Model" id="domain-classes">
-    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        
-        <!-- Título -->
-        <mxCell id="title" value="Diagrama de Clases - Modelo de Dominio" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="334" y="40" width="500" height="40" as="geometry" />
-        </mxCell>
-
-        <!-- Entidad Tasks -->
-        <mxCell id="tasks-entity" value="&lt;&lt;Entity&gt;&gt;&lt;br&gt;&lt;b&gt;Tasks&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="120" y="120" width="280" height="280" as="geometry" />
-        </mxCell>
-        <mxCell id="tasks-attrs" value="- id: Long&lt;br&gt;- orderIndex: Int&lt;br&gt;- title: String&lt;br&gt;- description: String?&lt;br&gt;- dateLimit: Date?&lt;br&gt;- grouperId: Long?&lt;br&gt;- priorityId: Long?" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="tasks-entity">
-          <mxGeometry y="40" width="280" height="110" as="geometry" />
-        </mxCell>
-        <mxCell id="tasks-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="tasks-entity">
-          <mxGeometry y="150" width="280" height="8" as="geometry" />
-        </mxCell>
-        <mxCell id="tasks-methods" value="&lt;&lt;JPA Annotations&gt;&gt;&lt;br&gt;@Entity&lt;br&gt;@Table(name = &quot;tasks&quot;)&lt;br&gt;@Id&lt;br&gt;@GeneratedValue(strategy = IDENTITY)&lt;br&gt;@Column(...)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="tasks-entity">
-          <mxGeometry y="158" width="280" height="122" as="geometry" />
-        </mxCell>
-
-        <!-- Entidad Groupers -->
-        <mxCell id="groupers-entity" value="&lt;&lt;Entity&gt;&gt;&lt;br&gt;&lt;b&gt;Groupers&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="480" y="120" width="280" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="groupers-attrs" value="- id: Long&lt;br&gt;- name: String&lt;br&gt;- description: String?&lt;br&gt;- orderIndex: Int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="groupers-entity">
-          <mxGeometry y="40" width="280" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="groupers-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="groupers-entity">
-          <mxGeometry y="110" width="280" height="8" as="geometry" />
-        </mxCell>
-        <mxCell id="groupers-methods" value="&lt;&lt;JPA Annotations&gt;&gt;&lt;br&gt;@Entity&lt;br&gt;@Table(name = &quot;groupers&quot;)&lt;br&gt;@Id&lt;br&gt;@GeneratedValue(strategy = IDENTITY)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="groupers-entity">
-          <mxGeometry y="118" width="280" height="82" as="geometry" />
-        </mxCell>
-
-        <!-- Entidad Priorities -->
-        <mxCell id="priorities-entity" value="&lt;&lt;Entity&gt;&gt;&lt;br&gt;&lt;b&gt;Priorities&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="840" y="120" width="280" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="priorities-attrs" value="- id: Long&lt;br&gt;- name: String&lt;br&gt;- description: String?&lt;br&gt;- orderIndex: Int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="priorities-entity">
-          <mxGeometry y="40" width="280" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="priorities-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="priorities-entity">
-          <mxGeometry y="110" width="280" height="8" as="geometry" />
-        </mxCell>
-        <mxCell id="priorities-methods" value="&lt;&lt;JPA Annotations&gt;&gt;&lt;br&gt;@Entity&lt;br&gt;@Table(name = &quot;priorities&quot;)&lt;br&gt;@Id&lt;br&gt;@GeneratedValue(strategy = IDENTITY)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="priorities-entity">
-          <mxGeometry y="118" width="280" height="82" as="geometry" />
-        </mxCell>
-
-        <!-- DTOs -->
-        <mxCell id="task-request" value="&lt;&lt;DTO&gt;&gt;&lt;br&gt;&lt;b&gt;TaskRequest&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
-          <mxGeometry x="120" y="480" width="200" height="140" as="geometry" />
-        </mxCell>
-        <mxCell id="task-request-attrs" value="+ orderIndex: Int&lt;br&gt;+ title: String&lt;br&gt;+ description: String?&lt;br&gt;+ dateLimit: Date?&lt;br&gt;+ grouperId: Long?&lt;br&gt;+ priorityId: Long?" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="task-request">
-          <mxGeometry y="40" width="200" height="100" as="geometry" />
-        </mxCell>
-
-        <mxCell id="task-response" value="&lt;&lt;DTO&gt;&gt;&lt;br&gt;&lt;b&gt;TaskResponse&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
-          <mxGeometry x="360" y="480" width="200" height="180" as="geometry" />
-        </mxCell>
-        <mxCell id="task-response-attrs" value="+ id: Long&lt;br&gt;+ orderIndex: Int&lt;br&gt;+ title: String&lt;br&gt;+ description: String?&lt;br&gt;+ dateLimit: Date?&lt;br&gt;+ grouperId: Long?&lt;br&gt;+ priorityId: Long?" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="task-response">
-          <mxGeometry y="40" width="200" height="110" as="geometry" />
-        </mxCell>
-        <mxCell id="task-response-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="task-response">
-          <mxGeometry y="150" width="200" height="8" as="geometry" />
-        </mxCell>
-        <mxCell id="task-response-methods" value="+ fromEntity(Tasks): TaskResponse" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontStyle=2" vertex="1" parent="task-response">
-          <mxGeometry y="158" width="200" height="22" as="geometry" />
-        </mxCell>
-
-        <mxCell id="task-with-details" value="&lt;&lt;DTO&gt;&gt;&lt;br&gt;&lt;b&gt;TaskWithDetails&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
-          <mxGeometry x="600" y="480" width="200" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="task-with-details-attrs" value="+ id: Long&lt;br&gt;+ orderIndex: Int&lt;br&gt;+ title: String&lt;br&gt;+ description: String?&lt;br&gt;+ dateLimit: Date?&lt;br&gt;+ grouperId: Long?&lt;br&gt;+ grouperName: String?&lt;br&gt;+ priorityId: Long?&lt;br&gt;+ priorityName: String?" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="task-with-details">
-          <mxGeometry y="40" width="200" height="160" as="geometry" />
-        </mxCell>
-
-        <!-- Relaciones -->
-        <mxCell id="rel1" value="0..*" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="tasks-attrs" target="groupers-attrs">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="400" y="200" as="sourcePoint" />
-            <mxPoint x="480" y="200" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel1-label" value="grouperId" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="410" y="165" width="60" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="rel1-end" value="0..1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="440" y="165" width="30" height="20" as="geometry" />
-        </mxCell>
-
-        <mxCell id="rel2" value="0..*" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="tasks-attrs" target="priorities-attrs">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="410" y="250" as="sourcePoint" />
-            <mxPoint x="840" y="180" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="700" y="215" />
-              <mxPoint x="700" y="178" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel2-label" value="priorityId" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="710" y="188" width="60" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="rel2-end" value="0..1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="810" y="158" width="30" height="20" as="geometry" />
-        </mxCell>
-
-        <!-- Relaciones DTO a Entity -->
-        <mxCell id="rel3" value="&lt;&lt;maps to&gt;&gt;" style="endArrow=open;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;strokeWidth=1;dashed=1;" edge="1" parent="1" source="task-request" target="tasks-entity">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="220" y="460" as="sourcePoint" />
-            <mxPoint x="270" y="410" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="rel4" value="&lt;&lt;maps from&gt;&gt;" style="endArrow=open;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=1;dashed=1;" edge="1" parent="1" source="task-response" target="tasks-entity">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="360" y="460" as="sourcePoint" />
-            <mxPoint x="310" y="410" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="460" y="440" />
-              <mxPoint x="260" y="440" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="rel5" value="&lt;&lt;extended view&gt;&gt;" style="endArrow=open;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;strokeWidth=1;dashed=1;" edge="1" parent="1" source="task-with-details" target="tasks-entity">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="700" y="460" as="sourcePoint" />
-            <mxPoint x="350" y="410" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="700" y="440" />
-              <mxPoint x="330" y="440" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-
-        <!-- Notas -->
-        <mxCell id="note1" value="&lt;b&gt;Nota:&lt;/b&gt;&lt;br&gt;Las relaciones entre entidades&lt;br&gt;son mediante claves foráneas&lt;br&gt;(grouperId, priorityId).&lt;br&gt;&lt;br&gt;No se usan anotaciones&lt;br&gt;@OneToMany/@ManyToOne&lt;br&gt;debido al uso de JdbcTemplate." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;size=10;" vertex="1" parent="1">
-          <mxGeometry x="840" y="360" width="220" height="160" as="geometry" />
-        </mxCell>
-
-        <mxCell id="note2" value="&lt;b&gt;Patrón:&lt;/b&gt; Data Transfer Object (DTO)&lt;br&gt;&lt;br&gt;Los DTOs separan la capa de&lt;br&gt;presentación del modelo de dominio&lt;br&gt;y permiten personalizar los datos&lt;br&gt;expuestos en la API." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;size=10;" vertex="1" parent="1">
-          <mxGeometry x="840" y="540" width="240" height="120" as="geometry" />
-        </mxCell>
-
-      </root>
-    </mxGraphModel>
-  </diagram>
+<mxfile host="65bd71144e">
+    <diagram id="domain-classes" name="Diagrama de Clases - Domain Model">
+        <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Diagrama de Clases - Modelo de Dominio" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="400" y="30" width="600" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Tasks" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="120" width="300" height="290" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="«Entity»" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontStyle=2" vertex="1" parent="3">
+                    <mxGeometry y="26" width="300" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="3">
+                    <mxGeometry y="46" width="300" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="- id: Long&#10;- orderIndex: Int&#10;- title: String&#10;- description: String?&#10;- dateLimit: Date?&#10;- grouperId: Long?&#10;- priorityId: Long?" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="3">
+                    <mxGeometry y="54" width="300" height="116" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="3">
+                    <mxGeometry y="170" width="300" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="@Entity&#10;@Table(name = &quot;tasks&quot;)&#10;@Id&#10;@GeneratedValue&#10;@Column(...)&#10;@Temporal(...)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;fontStyle=2" vertex="1" parent="3">
+                    <mxGeometry y="178" width="300" height="112" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Groupers" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="400" y="120" width="300" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="«Entity»" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontStyle=2" vertex="1" parent="9">
+                    <mxGeometry y="26" width="300" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="9">
+                    <mxGeometry y="46" width="300" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="- id: Long&#10;- name: String&#10;- description: String?&#10;- orderIndex: Int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="9">
+                    <mxGeometry y="54" width="300" height="76" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="9">
+                    <mxGeometry y="130" width="300" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="@Entity&#10;@Table(name = &quot;groupers&quot;)&#10;@Id&#10;@GeneratedValue" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;fontStyle=2" vertex="1" parent="9">
+                    <mxGeometry y="138" width="300" height="82" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="Priorities" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="120" width="300" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="«Entity»" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontStyle=2" vertex="1" parent="15">
+                    <mxGeometry y="26" width="300" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="15">
+                    <mxGeometry y="46" width="300" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="- id: Long&#10;- name: String&#10;- description: String?&#10;- orderIndex: Int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="15">
+                    <mxGeometry y="54" width="300" height="76" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="15">
+                    <mxGeometry y="130" width="300" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="@Entity&#10;@Table(name = &quot;priorities&quot;)&#10;@Id&#10;@GeneratedValue" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;fontStyle=2" vertex="1" parent="15">
+                    <mxGeometry y="138" width="300" height="82" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="6" target="12">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="500" y="400" as="sourcePoint"/>
+                        <mxPoint x="550" y="350" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontStyle=1" vertex="1" connectable="0" parent="21">
+                    <mxGeometry x="-0.8" y="-1" relative="1" as="geometry">
+                        <mxPoint x="5" y="-11" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="23" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontStyle=1" vertex="1" connectable="0" parent="21">
+                    <mxGeometry x="0.8" y="-1" relative="1" as="geometry">
+                        <mxPoint x="-5" y="-11" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="24" value="grouperId" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;" vertex="1" connectable="0" parent="21">
+                    <mxGeometry x="0.05" y="2" relative="1" as="geometry">
+                        <mxPoint y="12" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="25" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="6" target="18">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="500" y="400" as="sourcePoint"/>
+                        <mxPoint x="550" y="350" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="620" y="232"/>
+                            <mxPoint x="620" y="193"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="26" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontStyle=1" vertex="1" connectable="0" parent="25">
+                    <mxGeometry x="-0.85" y="1" relative="1" as="geometry">
+                        <mxPoint x="5" y="-9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="27" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontStyle=1" vertex="1" connectable="0" parent="25">
+                    <mxGeometry x="0.85" y="-1" relative="1" as="geometry">
+                        <mxPoint x="-5" y="-9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="28" value="priorityId" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;" vertex="1" connectable="0" parent="25">
+                    <mxGeometry x="0.2" y="-2" relative="1" as="geometry">
+                        <mxPoint x="-10" y="12" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="29" value="TaskRequest" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="480" width="250" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="«DTO»" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontStyle=2" vertex="1" parent="29">
+                    <mxGeometry y="26" width="250" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="29">
+                    <mxGeometry y="46" width="250" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="+ orderIndex: Int&#10;+ title: String&#10;+ description: String?&#10;+ dateLimit: Date?&#10;+ grouperId: Long?&#10;+ priorityId: Long?" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="29">
+                    <mxGeometry y="54" width="250" height="126" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="TaskResponse" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="480" width="280" height="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="«DTO»" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontStyle=2" vertex="1" parent="33">
+                    <mxGeometry y="26" width="280" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="33">
+                    <mxGeometry y="46" width="280" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="+ id: Long&#10;+ orderIndex: Int&#10;+ title: String&#10;+ description: String?&#10;+ dateLimit: Date?&#10;+ grouperId: Long?&#10;+ priorityId: Long?" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="33">
+                    <mxGeometry y="54" width="280" height="126" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="33">
+                    <mxGeometry y="180" width="280" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="+ fromEntity(Tasks): TaskResponse" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontStyle=2" vertex="1" parent="33">
+                    <mxGeometry y="188" width="280" height="42" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="TaskWithDetails" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="690" y="480" width="250" height="250" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="«DTO»" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;fontStyle=2" vertex="1" parent="39">
+                    <mxGeometry y="26" width="250" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="39">
+                    <mxGeometry y="46" width="250" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="+ id: Long&#10;+ orderIndex: Int&#10;+ title: String&#10;+ description: String?&#10;+ dateLimit: Date?&#10;+ grouperId: Long?&#10;+ grouperName: String?&#10;+ priorityId: Long?&#10;+ priorityName: String?" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="39">
+                    <mxGeometry y="54" width="250" height="196" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="" style="endArrow=open;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;strokeWidth=1;dashed=1;endFill=0;" edge="1" parent="1" source="29" target="3">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="500" y="500" as="sourcePoint"/>
+                        <mxPoint x="550" y="450" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="44" value="«maps to»" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;" vertex="1" connectable="0" parent="43">
+                    <mxGeometry x="-0.1" y="-1" relative="1" as="geometry">
+                        <mxPoint x="13" y="5" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="45" value="" style="endArrow=open;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=1;dashed=1;endFill=0;" edge="1" parent="1" source="33" target="3">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="500" y="500" as="sourcePoint"/>
+                        <mxPoint x="550" y="450" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="46" value="«maps from»" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;" vertex="1" connectable="0" parent="45">
+                    <mxGeometry x="-0.05" y="-1" relative="1" as="geometry">
+                        <mxPoint x="-15" y="5" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="47" value="" style="endArrow=open;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;strokeWidth=1;dashed=1;endFill=0;" edge="1" parent="1" source="39" target="3">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="500" y="500" as="sourcePoint"/>
+                        <mxPoint x="550" y="450" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="48" value="«extended view»" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;" vertex="1" connectable="0" parent="47">
+                    <mxGeometry x="-0.1" y="1" relative="1" as="geometry">
+                        <mxPoint x="-30" y="5" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="49" value="Nota:&#10;&#10;Las relaciones entre entidades&#10;son mediante claves foráneas&#10;(grouperId, priorityId).&#10;&#10;No se usan anotaciones&#10;@OneToMany / @ManyToOne&#10;debido al uso de JdbcTemplate." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;size=15;fontSize=12;" vertex="1" parent="1">
+                    <mxGeometry x="1100" y="120" width="260" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="Patrón: Data Transfer Object (DTO)&#10;&#10;Los DTOs separan la capa de&#10;presentación del modelo de dominio&#10;y permiten personalizar los datos&#10;expuestos en la API REST.&#10;&#10;TaskWithDetails incluye&#10;información de relaciones&#10;(nombres de grouper y priority)." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;size=15;fontSize=12;" vertex="1" parent="1">
+                    <mxGeometry x="1000" y="480" width="300" height="220" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
 </mxfile>
